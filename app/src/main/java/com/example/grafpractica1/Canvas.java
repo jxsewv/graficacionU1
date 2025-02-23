@@ -6,7 +6,12 @@ package com.example.grafpractica1;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -14,21 +19,87 @@ import com.badlogic.gdx.graphics.GL20;
  */
 public class Canvas implements ApplicationListener {
 
+    SpriteBatch sptbatch;
+    BitmapFont bmpfont;
+    ShapeRenderer shpRender;
+    
+    Figura f1 = new Figura("f1");
+    DefaultListModel<Figura> listaFiguras;
+    
+    public Canvas(){
+        listaFiguras = new DefaultListModel<>();
+        
+        //Figura f = new Figura("f1");  
+        //f.getListaPuntos().addElement(new Punto(50,50));
+        //f.getListaPuntos().addElement(new Punto(50,100));
+        
+        //listaFiguras.addElement(f);
+        
+        
+        //f = new Figura("f2 ");  
+        //f.getListaPuntos().addElement(new Punto(100,200));
+        //f.getListaPuntos().addElement(new Punto(300,300));
+        //f.getListaPuntos().addElement(new Punto(400,600));
+        
+        //listaFiguras.addElement(f);
+        
+        
+     
+    }
+    
+    
     @Override
     public void create() {
         //System.out.println("Se llamo a create");
+        sptbatch = new SpriteBatch();
+        bmpfont = new BitmapFont();
+        shpRender = new ShapeRenderer();
     }
     
-
+    
     @Override
     public void resize(int i, int i1) {
     //System.out.println("rezise");
     }
-
+    float i =0;
+    
+    
+     
+    
+    //Punto p1 = new Punto(50, 50);
+    //Punto p2 = new Punto(100, 100);
+    
     @Override
     public void render() {
-        Gdx.gl.glClearColor(0, .5f, .5f, 1);
+        Gdx.gl.glClearColor(0, 0f, 0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        
+        i +=0.2;
+        sptbatch.begin();
+        bmpfont.draw(sptbatch, "Hola mundooo", 100, 100+i);
+        sptbatch.end();
+        
+        shpRender.begin(ShapeRenderer.ShapeType.Filled);
+        
+        for (int j = 0; j < listaFiguras.getSize(); j++){
+            listaFiguras.get(j).dibujar(shpRender);
+        }
+        
+        shpRender.setColor(Color.FOREST);
+        shpRender.circle(200, 200, 20);
+        
+        shpRender.setColor(Color.CORAL);
+        shpRender.rectLine(100, 200, 300, 300, 5);
+        
+        shpRender.end();
+        
+        shpRender.begin(ShapeRenderer.ShapeType.Line);
+        shpRender.setColor(Color.WHITE);
+        shpRender.line(100, 0, 100, Gdx.graphics.getHeight());
+        
+        shpRender.setColor(Color.GOLD);
+        shpRender.line(0, 100, Gdx.graphics.getWidth(), 100);
+        shpRender.end();
     }
 
     @Override
@@ -44,6 +115,9 @@ public class Canvas implements ApplicationListener {
     @Override
     public void dispose() {
         //System.out.println("dispose");
+        sptbatch.dispose();
+        bmpfont.dispose();
+        shpRender.dispose();
     }
     
     
