@@ -4,6 +4,9 @@ import com.badlogic.gdx.backends.lwjgl.LwjglAWTCanvas;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.google.common.primitives.Floats;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -18,6 +21,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     Canvas canvas;
 
+    Figura figuraSeleccionada = null;
+    
+    Punto puntoSeleccionado  = null;
+    
     /**
      * Creates new form VentanaPrincipal
      */
@@ -34,7 +41,58 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel2.add(panelCanvas.getCanvas());
         
         
+        jList1.setModel(canvas.listaFiguras);
         
+        jList1.addListSelectionListener(new ListSelectionListener()
+                {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                figuraSeleccionada = jList1.getSelectedValue();
+                
+                if (figuraSeleccionada != null )
+                {
+                jTextField1.setText(figuraSeleccionada.getNombre());
+                
+                jList2.setModel(figuraSeleccionada.getListaPuntos());
+                }
+                else
+                {
+                 jTextField1.setText("");
+                }
+            }
+        });
+        
+        jList1.addListSelectionListener(new ListSelectionListener()
+                {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                figuraSeleccionada = jList1.getSelectedValue();
+                
+                if (figuraSeleccionada != null )
+                {
+                jTextField1.setText(figuraSeleccionada.getNombre());
+                
+                jList2.setModel(figuraSeleccionada.getListaPuntos());
+                }
+                else
+                {
+                 jTextField1.setText("");
+                }
+            }
+        });
+        jList2.addListSelectionListener(new ListSelectionListener()
+                {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                puntoSeleccionado = jList2.getSelectedValue();
+           
+                if (puntoSeleccionado != null)
+                {
+                    jTextField2.setText(""+puntoSeleccionado.getPx());
+                    jTextField3.setText(""+puntoSeleccionado.getPy());
+                }
+            }
+        });
     }
 
     /**
@@ -69,6 +127,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jButton7 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -81,17 +143,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(800, 600));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel2.setLayout(new java.awt.BorderLayout());
         jSplitPane1.setRightComponent(jPanel2);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Figuras"));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(jList2);
 
         jPanel3.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -100,7 +157,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel3.setText("Py:");
 
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
         jButton4.setText("Agregar.");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Editar.");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -163,11 +231,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(177, 406));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jList1);
 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -181,10 +244,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         jButton1.setText("Agregar.");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Eliminar.");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Editar.");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -230,6 +308,43 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
 
+        jLabel4.setText("Escala.");
+
+        jTextField4.setText("20");
+
+        jButton7.setText("Aplicar.");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton7)
+                .addContainerGap(502, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel6, java.awt.BorderLayout.PAGE_START);
+
         jMenu1.setText("Archivo");
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -273,10 +388,51 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (figuraSeleccionada != null )
+        {
+            float Px = Floats.tryParse(jTextField2.getText());
+            float Py = Floats.tryParse(jTextField3.getText());
+            Punto p = new Punto(Px, Py);
+            figuraSeleccionada.getListaPuntos().addElement(p);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (figuraSeleccionada != null)
+        {
+            canvas.listaFiguras.removeElement(figuraSeleccionada);
+            if(!jTextField1.getText().isEmpty()){
+                
+            }
+            figuraSeleccionada.setNombre(jTextField1.getText());
+            jList1.updateUI();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (!jTextField1.getText().isEmpty());
+
+        Figura f = new Figura (jTextField1.getText());
+        canvas.listaFiguras.addElement(f);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) { 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -323,11 +479,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JList<Figura> jList1;
+    private javax.swing.JList<Punto> jList2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -340,6 +498,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
@@ -347,5 +506,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
