@@ -2,6 +2,8 @@
 
 import com.badlogic.gdx.backends.lwjgl.LwjglAWTCanvas;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -297,6 +299,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        try
+{
+    javax.swing.UIManager.setLookAndFeel(new FlatDarculaLaf() );
+}   catch(Exception ex)
+{
+    System.err.println("Failed to initialize LaF" ) ;
+}
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
