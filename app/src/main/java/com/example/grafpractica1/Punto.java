@@ -24,7 +24,7 @@ public class Punto {
     }
 
     /**
-     * @param Px the Px to set
+     * @param Px the Px to set 
      */
     public void setPx(float Px) {
         this.Px = Px;
