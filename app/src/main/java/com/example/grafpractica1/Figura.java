@@ -13,7 +13,7 @@ import javax.swing.DefaultListModel;
  */
 public class Figura {
 
-    public static int escala = 20;
+    public static int escala = 10;
     /**
      * @return the nombre
      */
