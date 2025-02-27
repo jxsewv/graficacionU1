@@ -61,7 +61,7 @@ public class Canvas implements ApplicationListener {
     public void resize(int i, int i1) {
     //System.out.println("rezise");
     }
-    float i =0;
+    //float i =0;
     
     
      
@@ -74,10 +74,10 @@ public class Canvas implements ApplicationListener {
         Gdx.gl.glClearColor(0, 0f, 0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
-        i +=0.2;
-        sptbatch.begin();
-        bmpfont.draw(sptbatch, "Hola mundooo", 100, 100+i);
-        sptbatch.end();
+        //i +=0.2;
+        //sptbatch.begin();
+        //bmpfont.draw(sptbatch, "Hola mundooo", 100, 100+i);
+        //sptbatch.end();
         
         shpRender.begin(ShapeRenderer.ShapeType.Filled);
         
@@ -85,11 +85,11 @@ public class Canvas implements ApplicationListener {
             listaFiguras.get(j).dibujar(shpRender);
         }
         
-        shpRender.setColor(Color.FOREST);
-        shpRender.circle(200, 200, 20);
+        //shpRender.setColor(Color.FOREST);
+        //shpRender.circle(200, 200, 20);
         
-        shpRender.setColor(Color.CORAL);
-        shpRender.rectLine(100, 200, 300, 300, 5);
+        //shpRender.setColor(Color.CORAL);
+        //shpRender.rectLine(100, 200, 300, 300, 5);
         
         shpRender.end();
         
