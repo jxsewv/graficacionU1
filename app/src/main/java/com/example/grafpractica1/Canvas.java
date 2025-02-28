@@ -23,7 +23,7 @@ public class Canvas implements ApplicationListener {
     BitmapFont bmpfont;
     ShapeRenderer shpRender;
     
-    Figura f1 = new Figura("f1");
+    
     DefaultListModel<Figura> listaFiguras;
     
     public Canvas(){
@@ -92,13 +92,22 @@ public class Canvas implements ApplicationListener {
         //shpRender.rectLine(100, 200, 300, 300, 5);
         
         shpRender.end();
-        
+       // Dibujar cuadrícula
         shpRender.begin(ShapeRenderer.ShapeType.Line);
-        shpRender.setColor(Color.WHITE);
-        shpRender.line(100, 0, 100, Gdx.graphics.getHeight());
+        shpRender.setColor(Color.DARK_GRAY);
+        int gridSize = 50; // Tamaño de cada celda
+        int width = Gdx.graphics.getWidth();
+        int height = Gdx.graphics.getHeight();
         
-        shpRender.setColor(Color.GOLD);
-        shpRender.line(0, 100, Gdx.graphics.getWidth(), 100);
+        // Dibujar líneas verticales
+        for (int x = 0; x < width; x += gridSize) {
+            shpRender.line(x, 0, x, height);
+        }
+        
+        // Dibujar líneas horizontales
+        for (int y = 0; y < height; y += gridSize) {
+            shpRender.line(0, y, width, y);
+        }
         shpRender.end();
     }
 
