@@ -5,6 +5,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.google.common.primitives.Floats;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -140,7 +141,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setLayout(new java.awt.BorderLayout());
@@ -377,6 +377,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Ayuda");
 
         jMenuItem1.setText("Acerca de");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem1);
 
         jMenuBar1.add(jMenu2);
@@ -446,6 +451,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        JOptionPane.showMessageDialog(this,
+                "Integrantes del equipo: "
+                        + "\n Ariza Mendoza Genesis"
+                        + "\n Gil Toledano Nicol Abigail"
+                        + "\n Medina Aguirre Diego"
+                        + "\n Pablo Jimenez Jose de Jesus"
+                        + "\n Caltempa Carreño Joshua Efrain"
+                        + "\n Graficación: La graficación es la rama de la computación y las matemáticas que se "
+                        + "encarga de la generación, manipulación y visualización de imágenes mediante algoritmos y "
+                        + "técnicas computacionales. Su objetivo principal es representar datos, modelos matemáticos o"
+                        + " estructuras gráficas de manera visual en dos o tres dimensiones.","Acerca de", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
