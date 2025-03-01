@@ -15,7 +15,7 @@ import javax.swing.event.ListSelectionListener;
 
 /**
  *
- * @author chuch
+ * @author jxse
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     
@@ -377,6 +377,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Ayuda");
 
         jMenuItem1.setText("Acerca de");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem1);
 
         jMenuBar1.add(jMenu2);
@@ -446,6 +451,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
