@@ -453,7 +453,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+       JOptionPane.showMessageDialog(this,
+                "Integrantes del equipo: "
+                        + "\n Ariza Mendoza Genesis"
+                        + "\n Gil Toledano Nicol Abigail"
+                        + "\n Medina Aguirre Diego"
+                        + "\n Pablo Jimenez Jose de Jesus"
+                        + "\n Caltempa Carreño Joshua Efrain"
+                        + "\n Graficación: La graficación es la rama de la computación y las matemáticas que se "
+                        + "encarga de la generación, manipulación y visualización de imágenes mediante algoritmos y "
+                        + "técnicas computacionales. Su objetivo principal es representar datos, modelos matemáticos o"
+                        + " estructuras gráficas de manera visual en dos o tres dimensiones.","Acerca de", JOptionPane.INFORMATION_MESSAGE);    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
