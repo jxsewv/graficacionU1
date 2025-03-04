@@ -424,7 +424,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (figuraSeleccionada != null)
         {
-            canvas.listaFiguras.removeElement(figuraSeleccionada);
+ 
             if(!jTextField1.getText().isEmpty()){
                 
             }
