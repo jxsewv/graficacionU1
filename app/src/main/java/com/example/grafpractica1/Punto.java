@@ -52,7 +52,7 @@ public class Punto {
     public void Dibujar (ShapeRenderer shpRender)
     {
         shpRender.setColor(Color.FOREST);
-        shpRender.circle(getPx()*Figura.escala,getPy()*Figura.escala, 8);
+        shpRender.circle(getPx()*Figura.escala,getPy()*Figura.escala, 6);
         
     }
 
