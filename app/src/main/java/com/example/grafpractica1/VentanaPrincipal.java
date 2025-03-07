@@ -63,24 +63,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         
-        jList1.addListSelectionListener(new ListSelectionListener()
-                {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                figuraSeleccionada = jList1.getSelectedValue();
-                
-                if (figuraSeleccionada != null )
-                {
-                jTextField1.setText(figuraSeleccionada.getNombre());
-                
-                jList2.setModel(figuraSeleccionada.getListaPuntos());
-                }
-                else
-                {
-                 jTextField1.setText("");
-                }
-            }
-        });
+
         jList2.addListSelectionListener(new ListSelectionListener()
                 {
             @Override
@@ -453,7 +436,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
