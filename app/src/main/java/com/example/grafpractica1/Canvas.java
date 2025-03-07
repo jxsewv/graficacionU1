@@ -95,7 +95,7 @@ public class Canvas implements ApplicationListener {
        // Dibujar cuadrícula
         shpRender.begin(ShapeRenderer.ShapeType.Line);
         shpRender.setColor(Color.DARK_GRAY);
-        int gridSize = 50; // Tamaño de cada celda
+        int gridSize = 20; // Tamaño de cada celda
         int width = Gdx.graphics.getWidth();
         int height = Gdx.graphics.getHeight();
         
