@@ -71,44 +71,38 @@ public class Canvas implements ApplicationListener {
     
     @Override
     public void render() {
-        Gdx.gl.glClearColor(0, 0f, 0f, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        
-        //i +=0.2;
-        //sptbatch.begin();
-        //bmpfont.draw(sptbatch, "Hola mundooo", 100, 100+i);
-        //sptbatch.end();
-        
-        shpRender.begin(ShapeRenderer.ShapeType.Filled);
-        
-        for (int j = 0; j < listaFiguras.getSize(); j++){
-            listaFiguras.get(j).dibujar(shpRender);
-        }
-        
-        //shpRender.setColor(Color.FOREST);
-        //shpRender.circle(200, 200, 20);
-        
-        //shpRender.setColor(Color.CORAL);
-        //shpRender.rectLine(100, 200, 300, 300, 5);
-        
-        shpRender.end();
-       // Dibujar cuadrícula
-        shpRender.begin(ShapeRenderer.ShapeType.Line);
-        shpRender.setColor(Color.DARK_GRAY);
-        int gridSize = 20; // Tamaño de cada celda
-        int width = Gdx.graphics.getWidth();
-        int height = Gdx.graphics.getHeight();
-        
-        // Dibujar líneas verticales
-        for (int x = 0; x < width; x += gridSize) {
-            shpRender.line(x, 0, x, height);
-        }
-        
-        // Dibujar líneas horizontales
-        for (int y = 0; y < height; y += gridSize) {
-            shpRender.line(0, y, width, y);
-        }
-        shpRender.end();
+   
+    Gdx.gl.glClearColor(0, 0f, 0f, 1);
+    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    
+    
+
+    shpRender.begin(ShapeRenderer.ShapeType.Line);
+
+ 
+    for (int j = 0; j < listaFiguras.getSize(); j++) {
+        listaFiguras.get(j).dibujar(shpRender);
+    }
+
+    shpRender.end();
+    
+    // Dibujar cuadrícula 
+    shpRender.begin(ShapeRenderer.ShapeType.Line);
+    shpRender.setColor(Color.DARK_GRAY);
+    int gridSize = 50; // Tamaño de cada celda
+    int width = Gdx.graphics.getWidth();
+    int height = Gdx.graphics.getHeight();
+
+    // Dibujar líneas verticales
+    for (int x = 0; x < width; x += gridSize) {
+        shpRender.line(x, 0, x, height);
+    }
+
+    // Dibujar líneas horizontales
+    for (int y = 0; y < height; y += gridSize) {
+        shpRender.line(0, y, width, y);
+    }
+    shpRender.end();
     }
 
     @Override

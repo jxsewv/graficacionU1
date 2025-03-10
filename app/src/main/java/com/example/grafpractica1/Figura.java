@@ -4,6 +4,7 @@
  */
 package com.example.grafpractica1;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import javax.swing.DefaultListModel;
 
@@ -56,11 +57,21 @@ public class Figura {
         //getListaPuntos().addElement(new Punto(50,100));
        
     }
-    public void dibujar(ShapeRenderer shpRender){
-        for (int i = 0; i < getListaPuntos().size(); i++){
-            Punto p = getListaPuntos().getElementAt(i);
-            p.Dibujar(shpRender);
-        }
+public void dibujar(ShapeRenderer shpRender) {
+    for (int i = 0; i < getListaPuntos().size() - 1; i++) {
+        Punto p1 = getListaPuntos().getElementAt(i);
+        Punto p2 = getListaPuntos().getElementAt(i + 1);
+
+     shpRender.setColor(Color.RED);
+        shpRender.line(p1.getPx(), p1.getPy(), 
+                       p2.getPx(), p2.getPy());
+    }
+
+    // Dibujar los puntos
+    for (int i = 0; i < getListaPuntos().size(); i++) {
+        Punto p = getListaPuntos().getElementAt(i);
+        p.Dibujar(shpRender);
+    }
     }
     @Override
     public String toString(){

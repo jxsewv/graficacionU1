@@ -414,13 +414,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (figuraSeleccionada != null )
-        {
-            float Px = Floats.tryParse(jTextField2.getText());
-            float Py = Floats.tryParse(jTextField3.getText());
-            Punto p = new Punto(Px, Py);
-            figuraSeleccionada.getListaPuntos().addElement(p);
-        }
+          if (figuraSeleccionada != null) {
+        // Obtener las coordenadas del punto a agregar
+        float Px = Floats.tryParse(jTextField2.getText());
+        float Py = Floats.tryParse(jTextField3.getText());
+
+        // Crear un nuevo punto y agregarlo a la lista de puntos de la figura seleccionada
+        Punto p = new Punto(Px, Py);
+        figuraSeleccionada.getListaPuntos().addElement(p);
+
+        jList1.updateUI();
+    }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
