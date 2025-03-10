@@ -140,6 +140,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel3.setText("Py:");
 
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -383,7 +389,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+ if (figuraSeleccionada != null && !figuraSeleccionada.getListaPuntos().isEmpty()) {
+        
+        
+        if (!jTextField2.getText().isEmpty() && !jTextField3.getText().isEmpty()) {
+            float Px = Floats.tryParse(jTextField2.getText());
+            float Py = Floats.tryParse(jTextField3.getText());
+            
+            Punto p = figuraSeleccionada.getListaPuntos().get(0); 
+            p.setPx(Px);
+            p.setPy(Py);
+            
+            jList1.updateUI();
+        }
+    }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -436,7 +455,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
+    if (figuraSeleccionada != null && !figuraSeleccionada.getListaPuntos().isEmpty()) {
+        // Eliminar el último punto de la lista
+        figuraSeleccionada.getListaPuntos().remove(figuraSeleccionada.getListaPuntos().size() - 1);
+    }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -451,6 +473,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         + "encarga de la generación, manipulación y visualización de imágenes mediante algoritmos y "
                         + "técnicas computacionales. Su objetivo principal es representar datos, modelos matemáticos o"
                         + " estructuras gráficas de manera visual en dos o tres dimensiones.","Acerca de", JOptionPane.INFORMATION_MESSAGE);    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
