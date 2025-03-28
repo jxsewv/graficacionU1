@@ -611,11 +611,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_JTFTxActionPerformed
 
     private void BTNTraslacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNTraslacionActionPerformed
+ 
+        if(figuraSeleccionada != null)
+        {
        float tx = Floats.tryParse(JTFTx.getText());
        float ty = Floats.tryParse(JTFTy.getText());
         
         Matriz33 m = Operaciones2D.getMatrizTraslacion(tx, ty);
+        
         System.out.println(m);
+        
+        figuraSeleccionada.Transformar(m);
+        jList2.updateUI(); 
+        }
     }//GEN-LAST:event_BTNTraslacionActionPerformed
 
     /**
