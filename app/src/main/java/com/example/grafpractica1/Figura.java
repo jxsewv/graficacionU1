@@ -73,6 +73,15 @@ public void dibujar(ShapeRenderer shpRender) {
         p.Dibujar(shpRender);
     }
     }
+
+public void Transformar(Matriz33 m_trans)
+{
+     for (int i = 0; i < getListaPuntos().size(); i++) {
+        Punto p = getListaPuntos().getElementAt(i);
+        p.Transformar(m_trans);
+    }   
+}
+
     @Override
     public String toString(){
         return getNombre();
