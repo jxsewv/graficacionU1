@@ -345,6 +345,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         JTFTy.setText("0");
 
         BTNTraslacion.setText("Aplicar.");
+        BTNTraslacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNTraslacionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -604,6 +609,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void JTFTxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFTxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTFTxActionPerformed
+
+    private void BTNTraslacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNTraslacionActionPerformed
+       float tx = Floats.tryParse(JTFTx.getText());
+       float ty = Floats.tryParse(JTFTy.getText());
+        
+        Matriz33 m = Operaciones2D.getMatrizTraslacion(tx, ty);
+        System.out.println(m);
+    }//GEN-LAST:event_BTNTraslacionActionPerformed
 
     /**
      * @param args the command line arguments
