@@ -48,6 +48,22 @@ public class Punto {
         this.Px = Px;
         this.Py = Py;
     }
+    
+    public matriz31 getmatriz()
+    {
+        return new matriz31(getPx(), getPy(), 1);
+    }
+    
+    public void AplicarMatriz(matriz31 m)
+    {
+        setPx(m.datos[0]);
+        setPy(m.datos[1]);
+    }
+    
+    public void Transformar(Matriz33 m_trans)
+    {
+        AplicarMatriz(Operaciones2D.MultiplicarM33xM31(m_trans, getmatriz()));
+    }
 
     public void Dibujar (ShapeRenderer shpRender)
     {
