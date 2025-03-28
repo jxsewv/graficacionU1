@@ -27,21 +27,21 @@ public class Matriz33 {
     ) {
         datos = new float [3][3];
         datos [0][0] = n00;
-        datos [0][1] = n00;
-        datos [0][2] = n00;
-        datos [1][0] = n00;        
-        datos [1][1] = n00;                       
-        datos [1][2] = n00;
-        datos [2][0] = n00;
-        datos [2][1] = n00;        
-        datos [2][2] = n00;
+        datos [0][1] = n01;
+        datos [0][2] = n02;
+        datos [1][0] = n10;        
+        datos [1][1] = n11;                       
+        datos [1][2] = n12;
+        datos [2][0] = n20;
+        datos [2][1] = n21;        
+        datos [2][2] = n22;
     }    
 
     @Override
     public String toString() {
         String s = "";
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 s += datos [j][i] + ",";
             }
             s += "\n";
