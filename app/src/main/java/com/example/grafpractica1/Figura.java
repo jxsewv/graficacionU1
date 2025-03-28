@@ -82,6 +82,18 @@ public void Transformar(Matriz33 m_trans)
     }   
 }
 
+    public String Serializar()
+    {
+        String s = getNombre() + ",";
+        for (int i = 0; i < getListaPuntos().size(); i++) {
+        Punto p = getListaPuntos().getElementAt(i);
+        
+        s += p.getPx() + ",";
+        s += p.getPy() + ",";
+    }   
+        return s;
+    }
+
     @Override
     public String toString(){
         return getNombre();

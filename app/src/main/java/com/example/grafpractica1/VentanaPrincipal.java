@@ -5,6 +5,9 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.google.common.primitives.Floats;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -505,9 +508,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+     
+    JFileChooser jfc = new JFileChooser();
+   
+    
+    if(jfc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION)
+    {
+         Guardar(jfc.getSelectedFile());
+    }
+    
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    public void Guardar(File archivo)
+    {
+           String dato = "";
+        
+        
+        for (int i = 0; i < canvas.listaFiguras.size(); i++) {
+            dato += canvas.listaFiguras.get(i).Serializar();
+            dato += "\n";
+        }
+        
+        System.out.println(dato); 
+        
+        BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
+    }
+    
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
