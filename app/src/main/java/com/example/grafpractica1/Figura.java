@@ -63,8 +63,8 @@ public void dibujar(ShapeRenderer shpRender) {
         Punto p2 = getListaPuntos().getElementAt(i + 1);
 
      shpRender.setColor(Color.RED);
-        shpRender.line(p1.getPx(), p1.getPy(), 
-                       p2.getPx(), p2.getPy());
+        shpRender.line(p1.getPx() * escala, p1.getPy() * escala, 
+                       p2.getPx() * escala, p2.getPy() * escala);
     }
 
     // Dibujar los puntos
