@@ -5,8 +5,11 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.google.common.primitives.Floats;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -735,9 +738,51 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BTNTraslacion1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+       JFileChooser jfc = new JFileChooser();
+       if(jfc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
+       {
+           cargar(jfc.getSelectedFile());
+       }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
+    
+    public void cargar(File f)
+    {
+        try {
+            canvas.listaFiguras.clear();
+            
+            BufferedReader br = new BufferedReader(new FileReader(f));
+            
+            String linea;
+            
+            while ((linea = br.readLine()) != null){
+                System.out.println("Linea leida: " + linea);
+                String[] tokens = linea.split(",");
+                
+                String nombre = tokens [0];
+                
+                Figura fig = new Figura(nombre);
+                
+                System.out.println("Cargar puntos ");
+                
+                for (int i = 1; i < tokens.length; i+=2) {
+                    float px = Floats.tryParse(tokens [i]);
+                    float py = Floats.tryParse(tokens [i+1]);
+                    
+                    Punto p = new Punto(px, py);
+                    
+                    fig.getListaPuntos().addElement(p);
+                }
+                
+                canvas.listaFiguras.addElement(fig);
+                
+                jList1.updateUI();
+                jList2.updateUI();
+            }
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error al cargar", JOptionPane.ERROR_MESSAGE );
+        } 
+    }
     /**
      * @param args the command line arguments
      */
