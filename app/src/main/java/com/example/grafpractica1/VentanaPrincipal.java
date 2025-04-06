@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
@@ -36,11 +37,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     Punto puntoSeleccionado  = null;
     
+    Preferences prefs;
+    File ultimo_archivo_usado;
+    
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
+        
+        prefs = Preferences.userNodeForPackage(this.getClass());
+        
+        ultimo_archivo_usado = new File(prefs.get("ULTIMA_RUTA_USADA", ""));
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "Practica Graficacion";
         config.width = 1280;
@@ -87,6 +95,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
             }
         });
+        
+        cargar(ultimo_archivo_usado);
     }
 
     /**
@@ -576,7 +586,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
      
-    JFileChooser jfc = new JFileChooser();
+    JFileChooser jfc = new JFileChooser(ultimo_archivo_usado);
    
     
     if(jfc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION)
@@ -605,6 +615,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
              BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
              bw.append(datos);
              bw.close();
+             
+             prefs.put("ULTIMA_RUTA_USADA", archivo.getPath());
+             ultimo_archivo_usado = archivo;
         } catch(IOException ex) {
             System.err.println(ex.getMessage());
         }
@@ -738,7 +751,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BTNTraslacion1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-       JFileChooser jfc = new JFileChooser();
+       JFileChooser jfc = new JFileChooser("ULTIMA_RUTA_USADA");
        if(jfc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
        {
            cargar(jfc.getSelectedFile());
@@ -775,6 +788,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 
                 canvas.listaFiguras.addElement(fig);
                 
+                prefs.put("ULTIMA_RUTA_USADA", f.getPath());
+                ultimo_archivo_usado = f;
                 jList1.updateUI();
                 jList2.updateUI();
             }
