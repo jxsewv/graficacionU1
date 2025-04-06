@@ -542,6 +542,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Cargar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuItem4.setText("Salir");
@@ -584,17 +589,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public void Guardar(File archivo) throws IOException
     {
-           String dato = "";
-        
+        String datos = "";       
         
         for (int i = 0; i < canvas.listaFiguras.size(); i++) {
-            dato += canvas.listaFiguras.get(i).Serializar();
-            dato += "\n";
+            datos += canvas.listaFiguras.get(i).Serializar();
+            datos += "\n";
         }
         
-        System.out.println(dato); 
+        System.out.println(datos);
         
-        BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
+        try{
+             BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
+             bw.append(datos);
+             bw.close();
+        } catch(IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+       
     }
     
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -722,6 +733,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void BTNTraslacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNTraslacion1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BTNTraslacion1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
