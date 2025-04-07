@@ -54,10 +54,16 @@ public class Operaciones2D {
     
     public static matriz31 MultiplicarM33xM31(Matriz33 m33, matriz31 m31)
     {
-        matriz31 resultado = new matriz31(0,0,1);
-        
-        resultado.datos[0]= (m33.datos[0][0]*m31.datos[0])+(m33.datos[1][0]*m31.datos[1])+(m33.datos[2][0]*m31.datos[2]) ;
-        resultado.datos[1]= (m33.datos[0][1]*m31.datos[0])+(m33.datos[1][1]*m31.datos[1])+(m33.datos[2][1]*m31.datos[2]) ;
-        return resultado;
+    matriz31 resultado = new matriz31(0, 0, 1);
+
+    resultado.datos[0] = (m33.datos[0][0] * m31.datos[0]) + (m33.datos[1][0] * m31.datos[1]) + (m33.datos[2][0] * m31.datos[2]);
+    resultado.datos[1] = (m33.datos[0][1] * m31.datos[0]) + (m33.datos[1][1] * m31.datos[1]) + (m33.datos[2][1] * m31.datos[2]);
+
+    // Imprimir los puntos original y transformado
+    System.out.println("Punto original: (" + m31.datos[0] + ", " + m31.datos[1] + ")");
+    System.out.println("Punto transformado: (" + resultado.datos[0] + ", " + resultado.datos[1] + ")");
+    System.out.println("-----------------------------");
+
+    return resultado;
     }
 }
