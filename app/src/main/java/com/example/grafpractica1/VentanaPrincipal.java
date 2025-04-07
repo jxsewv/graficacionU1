@@ -792,7 +792,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_JTFTx1ActionPerformed
 
     private void BTNTraslacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNTraslacion1ActionPerformed
-        // TODO add your handling code here:
+    if (figuraSeleccionada != null) {
+        Float angulo = Floats.tryParse(JTFTx1.getText());
+        
+        if (angulo != null) {
+            Matriz33 m = Operaciones2D.getMatrizRotacion(angulo);
+            System.out.println("Rotación aplicada con ángulo: " + angulo);
+            figuraSeleccionada.Transformar(m);
+            jList2.updateUI();
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor ingresa un ángulo válido.");
+        }
+    }
     }//GEN-LAST:event_BTNTraslacion1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -804,11 +815,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void BTNTraslacion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNTraslacion2ActionPerformed
-        // TODO add your handling code here:
+           if(figuraSeleccionada != null) {
+        float shx = Floats.tryParse(jTextField7.getText());
+        Matriz33 m = Operaciones2D.getMatrizSesgadoX(shx);
+
+        System.out.println("Sesgado X: " + m);
+
+        figuraSeleccionada.Transformar(m);
+        jList2.updateUI(); 
+    }
     }//GEN-LAST:event_BTNTraslacion2ActionPerformed
 
     private void BTNTraslacion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNTraslacion3ActionPerformed
-        // TODO add your handling code here:
+       if(figuraSeleccionada != null) {
+        float shy = Floats.tryParse(jTextField8.getText());
+        Matriz33 m = Operaciones2D.getMatrizSesgadoY(shy);
+
+        System.out.println("Sesgado Y: " + m);
+
+        figuraSeleccionada.Transformar(m);
+        jList2.updateUI(); 
+    }
     }//GEN-LAST:event_BTNTraslacion3ActionPerformed
     
     public void cargar(File f)

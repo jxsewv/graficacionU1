@@ -14,7 +14,7 @@ public class Operaciones2D {
         return new Matriz33(1f, 0, 0, 0, 1f, 0, 0, 0, 1f);
     }
     
-        public static Matriz33 getMatrizTraslacion(float tx, float ty)
+    public static Matriz33 getMatrizTraslacion(float tx, float ty)
     {
         Matriz33 m = getMatrizIdentidad();
         m.datos[2][0] = tx;
@@ -22,34 +22,35 @@ public class Operaciones2D {
         
         return m;
     }
-        public static Matriz33 getMatrizEscalado(float sx, float sy)
-    {
-        Matriz33 m = getMatrizIdentidad();
-        return m;
-        
-    }
     
-        public static Matriz33 getMatrizRotacion(float angulo)
-    {
+    public static Matriz33 getMatrizEscalado(float sx, float sy) {
         Matriz33 m = getMatrizIdentidad();
+        m.datos[0][0] = sx; // Escala en X
+        m.datos[1][1] = sy; // Escala en Y
         return m;
-        
-        }
-        
-        public static Matriz33 getMatrizSesgadoX(float shx)
-    {
+    }
+
+    public static Matriz33 getMatrizRotacion(float angulo) {
         Matriz33 m = getMatrizIdentidad();
+        float radianes = (float) Math.toRadians(angulo); // Convertir grados a radianes
+        m.datos[0][0] = (float) Math.cos(radianes); // cos(θ)
+        m.datos[0][1] = (float) -Math.sin(radianes); // -sin(θ)
+        m.datos[1][0] = (float) Math.sin(radianes); // sin(θ)
+        m.datos[1][1] = (float) Math.cos(radianes); // cos(θ)
         return m;
-        
-        }
-        
-        public static Matriz33 getMatrizSesgadoY(float shy)
-    {
+    }
+
+    public static Matriz33 getMatrizSesgadoX(float shx) {
         Matriz33 m = getMatrizIdentidad();
+        m.datos[0][1] = shx; // Afecta X en función de Y
         return m;
-        
-        }
-        
+    }
+
+    public static Matriz33 getMatrizSesgadoY(float shy) {
+        Matriz33 m = getMatrizIdentidad();
+        m.datos[1][0] = shy; // Afecta Y en función de X
+        return m;
+    }
     
     public static matriz31 MultiplicarM33xM31(Matriz33 m33, matriz31 m31)
     {
