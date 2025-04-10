@@ -77,7 +77,7 @@ public class Canvas implements ApplicationListener {
     
     
 
-    shpRender.begin(ShapeRenderer.ShapeType.Line);
+    shpRender.begin(ShapeRenderer.ShapeType.Filled);
 
  
     for (int j = 0; j < listaFiguras.getSize(); j++) {

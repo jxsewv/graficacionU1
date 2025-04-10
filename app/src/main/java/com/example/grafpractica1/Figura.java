@@ -63,9 +63,9 @@ public void dibujar(ShapeRenderer shpRender) {
         Punto p1 = getListaPuntos().getElementAt(i);
         Punto p2 = getListaPuntos().getElementAt(i + 1);
 
-        shpRender.setColor(Color.RED);
-        shpRender.line(p1.getPx() * escala, p1.getPy() * escala, 
-                       p2.getPx() * escala, p2.getPy() * escala);
+        shpRender.setColor(Color.MAGENTA);
+        shpRender.rectLine(p1.getPx() * escala, p1.getPy() * escala, 
+                       p2.getPx() * escala, p2.getPy() * escala,5);
     }
 
     // Dibujar línea del último punto al primero (cerrar figura)
@@ -73,9 +73,9 @@ public void dibujar(ShapeRenderer shpRender) {
         Punto primero = getListaPuntos().getElementAt(0);
         Punto ultimo = getListaPuntos().getElementAt(getListaPuntos().size() - 1);
 
-        shpRender.setColor(Color.RED);
-        shpRender.line(ultimo.getPx() * escala, ultimo.getPy() * escala,
-                       primero.getPx() * escala, primero.getPy() * escala);
+        shpRender.setColor(Color.MAGENTA);
+        shpRender.rectLine(ultimo.getPx() * escala, ultimo.getPy() * escala,
+                       primero.getPx() * escala, primero.getPy() * escala,5);
     }
 
     // Dibujar los puntos
