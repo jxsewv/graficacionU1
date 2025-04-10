@@ -58,13 +58,24 @@ public class Figura {
        
     }
 public void dibujar(ShapeRenderer shpRender) {
+    // Dibujar líneas entre puntos consecutivos
     for (int i = 0; i < getListaPuntos().size() - 1; i++) {
         Punto p1 = getListaPuntos().getElementAt(i);
         Punto p2 = getListaPuntos().getElementAt(i + 1);
 
-     shpRender.setColor(Color.RED);
+        shpRender.setColor(Color.RED);
         shpRender.line(p1.getPx() * escala, p1.getPy() * escala, 
                        p2.getPx() * escala, p2.getPy() * escala);
+    }
+
+    // Dibujar línea del último punto al primero (cerrar figura)
+    if (getListaPuntos().size() > 2) {
+        Punto primero = getListaPuntos().getElementAt(0);
+        Punto ultimo = getListaPuntos().getElementAt(getListaPuntos().size() - 1);
+
+        shpRender.setColor(Color.RED);
+        shpRender.line(ultimo.getPx() * escala, ultimo.getPy() * escala,
+                       primero.getPx() * escala, primero.getPy() * escala);
     }
 
     // Dibujar los puntos
