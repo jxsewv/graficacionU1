@@ -107,6 +107,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel6 = new javax.swing.JPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
@@ -592,35 +593,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel12.setLayout(new java.awt.BorderLayout());
 
-        jRadioButton2.setText("jRadioButton2");
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setSelected(true);
+        jRadioButton2.setText("2D");
+        jPanel13.add(jRadioButton2);
 
-        jRadioButton1.setText("jRadioButton1");
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel13Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(jRadioButton1)
-                .addGap(0, 45, Short.MAX_VALUE))
-            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel13Layout.createSequentialGroup()
-                    .addGap(39, 39, 39)
-                    .addComponent(jRadioButton2)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("3D");
+        jPanel13.add(jRadioButton1);
 
         jPanel12.add(jPanel13, java.awt.BorderLayout.NORTH);
 
@@ -986,6 +966,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField JTFTx;
     private javax.swing.JTextField JTFTx1;
     private javax.swing.JTextField JTFTy;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
