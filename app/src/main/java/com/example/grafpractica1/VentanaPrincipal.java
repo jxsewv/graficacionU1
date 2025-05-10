@@ -1,5 +1,4 @@
-    package com.example.grafpractica1;
-
+package com.example.grafpractica1;
 import com.badlogic.gdx.backends.lwjgl.LwjglAWTCanvas;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.formdev.flatlaf.FlatDarculaLaf;
