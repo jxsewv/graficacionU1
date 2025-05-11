@@ -54,7 +54,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         config.height = 720;
         config.vSyncEnabled = true;
         config.foregroundFPS = 60;
-        canvas = new Canvas();
+        canvas = new Canvas(this);
         LwjglAWTCanvas panelCanvas = new LwjglAWTCanvas(canvas, config);
         jPanel2.add(panelCanvas.getCanvas());
         
@@ -161,8 +161,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        radioButton2d = new javax.swing.JRadioButton();
+        radioButton3d = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -593,14 +593,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel12.setLayout(new java.awt.BorderLayout());
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setSelected(true);
-        jRadioButton2.setText("2D");
-        jPanel13.add(jRadioButton2);
+        buttonGroup1.add(radioButton2d);
+        radioButton2d.setSelected(true);
+        radioButton2d.setText("2D");
+        jPanel13.add(radioButton2d);
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("3D");
-        jPanel13.add(jRadioButton1);
+        buttonGroup1.add(radioButton3d);
+        radioButton3d.setText("3D");
+        jPanel13.add(radioButton3d);
 
         jPanel12.add(jPanel13, java.awt.BorderLayout.NORTH);
 
@@ -1008,8 +1008,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
@@ -1021,5 +1019,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    public javax.swing.JRadioButton radioButton2d;
+    public javax.swing.JRadioButton radioButton3d;
     // End of variables declaration//GEN-END:variables
 }

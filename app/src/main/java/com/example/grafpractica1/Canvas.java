@@ -8,8 +8,21 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.PerspectiveCamera;
+import com.badlogic.gdx.graphics.VertexAttributes;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g3d.Environment;
+import com.badlogic.gdx.graphics.g3d.Material;
+import com.badlogic.gdx.graphics.g3d.Model;
+import com.badlogic.gdx.graphics.g3d.ModelBatch;
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
+import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
+import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader;
+import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
+import com.badlogic.gdx.graphics.g3d.utils.DefaultShaderProvider;
+import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import javax.swing.DefaultListModel;
 
@@ -23,10 +36,20 @@ public class Canvas implements ApplicationListener {
     BitmapFont bmpfont;
     ShapeRenderer shpRender;
     
+    VentanaPrincipal padre;
+    
+    //para 3d
+    Environment environment;
+    ModelBatch modelbatch;
+    PerspectiveCamera camera;
+    ModelBuilder builder;
+    CameraInputController camInput;
+    
     
     DefaultListModel<Figura> listaFiguras;
     
-    public Canvas(){
+    public Canvas(VentanaPrincipal padre){
+        this.padre = padre; 
         listaFiguras = new DefaultListModel<>();
         
         //Figura f = new Figura("f1");  
@@ -48,12 +71,45 @@ public class Canvas implements ApplicationListener {
     }
     
     
+    Model m1;
+    ModelInstance m1instance;
+    
     @Override
     public void create() {
         //System.out.println("Se llamo a create");
         sptbatch = new SpriteBatch();
         bmpfont = new BitmapFont();
         shpRender = new ShapeRenderer();
+        
+       environment = new Environment();
+       environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
+       environment.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
+       
+        DefaultShader.Config shader_config = new DefaultShader.Config();
+        shader_config.numDirectionalLights = 1;
+        shader_config.numPointLights = 0;
+        shader_config.numBones = 16;
+       
+       modelbatch = new ModelBatch(new DefaultShaderProvider(shader_config));
+       
+       
+       camera = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+       camera.position.set(10f,10f,10f);
+       camera.lookAt(0, 0, 0);
+       camera.near = 1f;
+       camera.far = 300f;
+       camera.update();
+       
+       builder = new ModelBuilder();
+       camInput = new CameraInputController(camera);
+       Gdx.input.setInputProcessor(camInput);
+       
+       m1 = builder.createBox(5, 2, 3, new Material(ColorAttribute.createDiffuse(Color.BLUE)),VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
+       
+       m1instance = new ModelInstance(m1);
+       
+  
+        
     }
     
     
@@ -69,9 +125,8 @@ public class Canvas implements ApplicationListener {
     //Punto p1 = new Punto(50, 50);
     //Punto p2 = new Punto(100, 100);
     
-    @Override
-    public void render() {
-   
+    public void render2D(){
+        
     Gdx.gl.glClearColor(0, 0f, 0f, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     
@@ -103,6 +158,33 @@ public class Canvas implements ApplicationListener {
         shpRender.line(0, y, width, y);
     }
     shpRender.end();
+    }
+    
+    public void render3D(){
+    //Gdx.gl.glClearColor(0f, 0f, 0f, 1);
+    //Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);  
+    
+    
+    camera.update();
+    camInput.update();
+    
+    modelbatch.begin(camera);
+    modelbatch.render(m1instance, environment);
+    modelbatch.end();
+    
+ 
+    
+    }
+            
+    @Override
+    public void render() {
+        if (padre.radioButton2d.isSelected())
+            render2D();
+        else
+            render3D();
+   
     }
 
     @Override
