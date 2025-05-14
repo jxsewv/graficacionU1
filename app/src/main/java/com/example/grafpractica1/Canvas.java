@@ -47,10 +47,13 @@ public class Canvas implements ApplicationListener {
     
     
     DefaultListModel<Figura> listaFiguras;
+    DefaultListModel<Figura3D> listaFiguras3D;
+    
     
     public Canvas(VentanaPrincipal padre){
         this.padre = padre; 
         listaFiguras = new DefaultListModel<>();
+        listaFiguras3D = new DefaultListModel<>();
         
         //Figura f = new Figura("f1");  
         //f.getListaPuntos().addElement(new Punto(50,50));
@@ -165,6 +168,25 @@ public class Canvas implements ApplicationListener {
     //Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);  
+    
+    if(padre.BTNArriba.getModel().isPressed()){
+        camera.position.y += 0.1f;
+    }
+    else if(padre.BTNAbajo.getModel().isPressed()){
+        camera.position.y -=0.1f;
+    }
+    else if(padre.BTNIzquierda.getModel().isPressed()){
+        camera.position.x +=0.1f;
+    }
+    else if(padre.BTNDerecha.getModel().isPressed()){
+        camera.position.x -=0.1f;
+    }
+    else if(padre.BTNFrente.getModel().isPressed()){
+        camera.position.z +=0.1f;
+    }
+    else if(padre.BTNAtras.getModel().isPressed()){
+        camera.position.z -=0.1f;
+    }
     
     
     camera.update();
