@@ -780,6 +780,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel17.setText("Tipo:");
 
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         jButton16.setText("Agregar");
         jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1191,6 +1197,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
     
     
     

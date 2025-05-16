@@ -44,7 +44,27 @@ public class Figura3D {
     }
     
     public void inicializar(ModelBuilder builder){
-     m1 = builder.createBox(5, 2, 4, new Material(ColorAttribute.createDiffuse(Color.BLUE)),VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
+        switch (tipo) {
+            case CUBO:
+             m1 = builder.createBox(sx, sy, sz, new Material(ColorAttribute.createDiffuse(this.color)),VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
+                
+                break;
+            case ESFERA:
+            m1 = builder.createSphere(sx, sy, sz, 16,16, new Material(ColorAttribute.createDiffuse(this.color)), VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
+            
+                break;
+            case CILINDRO:
+                
+            m1 = builder.createCylinder(sx, sy, sz, 16, new Material(ColorAttribute.createDiffuse(this.color)),VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
+                break;
+                
+            case CONO:
+            m1 = builder.createCone(sx, sy, sz, 16,new Material(ColorAttribute.createDiffuse(this.color)),VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
+                break;
+            default:
+             System.err.println("Tipo de figura no válido: " + tipo);
+            return;
+        }
        
        m1instance = new ModelInstance(m1);
     }
