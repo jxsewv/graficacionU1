@@ -5,6 +5,14 @@
 package com.example.grafpractica1;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.VertexAttributes;
+import com.badlogic.gdx.graphics.g3d.Environment;
+import com.badlogic.gdx.graphics.g3d.Material;
+import com.badlogic.gdx.graphics.g3d.Model;
+import com.badlogic.gdx.graphics.g3d.ModelBatch;
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
+import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 
 /**
  *
@@ -18,6 +26,8 @@ public class Figura3D {
     private float sz;
     private TiposFigura3D tipo = TiposFigura3D.NINGUNO;
     private Color color;
+    Model m1;
+    ModelInstance m1instance;
 
     public Figura3D(String Nombre, float sx, float sy, float sz, Color color, TiposFigura3D tipo) {
         this.Nombre = Nombre;
@@ -25,9 +35,19 @@ public class Figura3D {
         this.sy = sy;
         this.sz = sz;
         this.color = color;
-        this.tipo = tipo;
+        this.tipo = tipo; 
+        
     }
     
+    public boolean isInicializado(){
+        return m1instance != null;
+    }
+    
+    public void inicializar(ModelBuilder builder){
+     m1 = builder.createBox(5, 2, 4, new Material(ColorAttribute.createDiffuse(Color.BLUE)),VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
+       
+       m1instance = new ModelInstance(m1);
+    }
     
     
     
@@ -117,7 +137,9 @@ public class Figura3D {
 
     
  
-    public void Dibujar (){
+    public void Dibujar (ModelBatch modelBatch, Environment environment){
+        modelBatch.render(m1instance, environment);
+
     
 }
     

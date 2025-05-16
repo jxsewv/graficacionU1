@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -113,6 +114,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jTextField6.setText(""+ figura3DSeleccionada.getSx());
                 jTextField9.setText(""+ figura3DSeleccionada.getSy());
                 jTextField10.setText(""+ figura3DSeleccionada.getSz());
+                
+                //Color c1 = figura3DSeleccionada.getColor();
+                //Java.awt.Color = new Color( c1.r,c1.g, c1.b,c1.a);
+                //jButton15.setBackground(java.awt.Color.red);
+                //jComboBox1.setSelectedItem(figura3DSeleccionada.getTipo());
+                
                 }
                 else
                 {
@@ -781,6 +788,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         jButton17.setText("Eliminar");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -1172,6 +1184,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        if(figura3DSeleccionada != null){
+            canvas.listaFiguras3D.removeElement(figura3DSeleccionada);
+            
+        }
+    }//GEN-LAST:event_jButton17ActionPerformed
     
     
     

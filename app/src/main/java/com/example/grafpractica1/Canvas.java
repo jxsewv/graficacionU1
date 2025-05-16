@@ -74,8 +74,7 @@ public class Canvas implements ApplicationListener {
     }
     
     
-    Model m1;
-    ModelInstance m1instance;
+
     
     @Override
     public void create() {
@@ -107,9 +106,7 @@ public class Canvas implements ApplicationListener {
        camInput = new CameraInputController(camera);
        Gdx.input.setInputProcessor(camInput);
        
-       m1 = builder.createBox(5, 2, 3, new Material(ColorAttribute.createDiffuse(Color.BLUE)),VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
-       
-       m1instance = new ModelInstance(m1);
+      
        
   
         
@@ -193,7 +190,14 @@ public class Canvas implements ApplicationListener {
     camInput.update();
     
     modelbatch.begin(camera);
-    modelbatch.render(m1instance, environment);
+        for (int i = 0; i < listaFiguras3D.size(); i++) {
+            Figura3D f3d = listaFiguras3D.get(i);
+            if(!f3d.isInicializado()){
+                f3d.inicializar(builder);
+            }
+            
+            f3d.Dibujar(modelbatch, environment);
+        }
     modelbatch.end();
     
  
