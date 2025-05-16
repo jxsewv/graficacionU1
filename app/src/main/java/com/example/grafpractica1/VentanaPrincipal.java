@@ -1172,7 +1172,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     float sz= Floats.tryParse(jTextField10.getText());
     TiposFigura3D tipo = (Figura3D.TiposFigura3D) jComboBox1.getSelectedItem();
     java.awt.Color c1 = jButton15.getBackground(); 
-    Color color = new Color(c1.getRed(), c1.getBlue(), c1.getGreen(), c1.getAlpha());
+    Color color = new Color(c1.getRed(),  c1.getGreen(),c1.getBlue(), c1.getAlpha());
     
     Figura3D nuevo = new Figura3D(Nombre, sx, sy, sz, color, tipo);
     canvas.listaFiguras3D.addElement(nuevo);
